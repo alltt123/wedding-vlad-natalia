@@ -391,32 +391,28 @@ document.getElementById("seconds").innerText=Math.floor((d%(1000*60))/1000)
 },1000)
 
 /* ОТПРАВКА ФОРМЫ */
-document.getElementById("rsvpForm").addEventListener("submit",function(e){
-e.preventDefault()
-const data={
-name:this.name.value,
-plusOne:this.plusOne.value,
-plusOneName:this.plusOneName.value,
-alcohol:this.alcohol.value,
-mediaConsent:this.mediaConsent.value,
-comment:this.comment.value
-}
-fetch("https://script.google.com/macros/s/AKfycbxx-A7Uz2qcmGAAiiYb8-kUq2fJqj-zwNlIOJnl1zEcY0UOoYTOCqksIEiorZaoxC_QHA/exec",{
-method:"POST",
-headers: {
-"Content-Type": "application/json"  // <-- добавлено
-},
-body:JSON.stringify(data)
-})
-.then(()=>{
-document.getElementById("msg").innerText="Спасибо! Ответ отправлен ❤️"
-this.reset()
-})
-.catch(()=>{
-document.getElementById("msg").innerText="Ошибка отправки"
-})
-})
-</script>
+document.getElementById("rsvpForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-</body>
-</html>
+  const data = {
+    name: this.name.value,
+    plusOne: this.plusOne.value,
+    plusOneName: this.plusOneName.value,
+    alcohol: this.alcohol.value,
+    mediaConsent: this.mediaConsent.value,
+    comment: this.comment.value
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbxx-A7Uz2qcmGAAiiYb8-kUq2fJqj-zwNlIOJnl1zEcY0UOoYTOCqksIEiorZaoxC_QHA/exec", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(() => {
+    document.getElementById("msg").innerText = "Спасибо! Ответ отправлен ❤️";
+    this.reset();
+  })
+  .catch(() => {
+    document.getElementById("msg").innerText = "Ошибка отправки";
+  });
+});
