@@ -1,0 +1,34 @@
+<!-- ОТПРАВКА ФОРМЫ -->
+<script>
+document.getElementById("rsvpForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const data = {
+    name: this.name.value,
+    plusOne: this.plusOne.value,
+    plusOneName: this.plusOneName.value,
+    alcohol: this.alcohol.value,
+    mediaConsent: this.mediaConsent.value,
+    comment: this.comment.value
+  };
+
+  fetch("https://script.google.com/macros/s/ВАШ_DEPLOY_ID/exec", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(result => {
+    document.getElementById("msg").innerText = "Спасибо! Ответ отправлен ❤️";
+    this.reset();
+    console.log("Apps Script ответ:", result);
+  })
+  .catch(error => {
+    document.getElementById("msg").innerText = "Ошибка отправки";
+    console.error("Ошибка:", error);
+  });
+
+});
+</script>
