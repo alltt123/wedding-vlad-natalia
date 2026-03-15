@@ -138,7 +138,7 @@ const data = {
   mediaConsent: this.mediaConsent.value,
   comment: this.comment.value
 };
-fetch("ВАШ_URL_APPS_SCRIPT", {  // <-- вставьте сюда URL Apps Script
+fetch("https://script.google.com/macros/s/AKfycbyHYpMxp8TNs5-fv_7gJC3eWCrppMtD64A4CBfwBZOduqXWgoUdN3d83zjcrCLYqhHpDQ/exec", {  // <-- вставьте сюда URL Apps Script
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify(data)
