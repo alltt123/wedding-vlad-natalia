@@ -391,11 +391,8 @@ document.getElementById("seconds").innerText=Math.floor((d%(1000*60))/1000)
 },1000)
 
 /* ОТПРАВКА ФОРМЫ */
-
 document.getElementById("rsvpForm").addEventListener("submit",function(e){
-
 e.preventDefault()
-
 const data={
 name:this.name.value,
 plusOne:this.plusOne.value,
@@ -404,31 +401,22 @@ alcohol:this.alcohol.value,
 mediaConsent:this.mediaConsent.value,
 comment:this.comment.value
 }
-
 fetch("https://script.google.com/macros/s/AKfycbwDcrmChz1jwVBy4_43RuvZ5iW8GQFRfidUcEP2zpz2qSvfzRPefNxvrDUWGBqy2GHSoQ/exec",{
-
 method:"POST",
+headers: {
+"Content-Type": "application/json"  // <-- добавлено
+},
 body:JSON.stringify(data)
-
 })
 .then(()=>{
-
 document.getElementById("msg").innerText="Спасибо! Ответ отправлен ❤️"
-
 this.reset()
-
 })
-
 .catch(()=>{
-
 document.getElementById("msg").innerText="Ошибка отправки"
-
 })
-
 })
-
 </script>
 
 </body>
-
 </html>
