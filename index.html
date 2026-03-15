@@ -292,30 +292,44 @@ setInterval(()=>{
 },1000)
 
 /* ОТПРАВКА ФОРМЫ */
+
 document.getElementById("rsvpForm").addEventListener("submit",function(e){
+
 e.preventDefault()
+
 const data={
-  name:this.name.value,
-  plusOne:this.plusOne.value,
-  plusOneName:this.plusOneName.value,
-  alcohol:this.alcohol.value,
-  mediaConsent:this.mediaConsent.value,
-  comment:this.comment.value
+name:this.name.value,
+plusOne:this.plusOne.value,
+plusOneName:this.plusOneName.value,
+alcohol:this.alcohol.value,
+mediaConsent:this.mediaConsent.value,
+comment:this.comment.value
 }
+
 fetch("https://script.google.com/macros/s/AKfycbyVoUutoJoJUa6BfKV7pebrmxmRAHZPp5b6_IOelzD8rMFZXSoKNKeb_XxlkPBGJlhssA/exec",{
-  method:"POST",
-  headers: {"Content-Type": "application/json"},
-  body:JSON.stringify(data)
+
+method:"POST",
+body:JSON.stringify(data)
+
 })
 .then(()=>{
-  document.getElementById("msg").innerText="Спасибо! Ответ отправлен ❤️"
-  this.reset()
+
+document.getElementById("msg").innerText="Спасибо! Ответ отправлен ❤️"
+
+this.reset()
+
 })
+
 .catch(()=>{
-  document.getElementById("msg").innerText="Ошибка отправки"
+
+document.getElementById("msg").innerText="Ошибка отправки"
+
 })
+
 })
+
 </script>
 
 </body>
+
 </html>
